@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="submitHandler(event)">
+        <label for="str">Enter a string</label>
+        <input type="text" name="string" id="string">
+        <input type="submit" value="add">
+    </form>
+    <ol id="list">
+
+    </ol>
+    <script>
+        async function submitHandler(e){
+            e.prevenrDefault()
+            let value = e.target.string.value;
+            let res = await fetch("/todo",{
+                method: "POST",
+                headers:{
+                    "content-type": "application/json"
+                },
+                body:JSON.stringify({
+                    todo : value
+                })
+            })
+        }
+    </script>
+</body>
+</html>
