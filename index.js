@@ -15,7 +15,15 @@ server.use(mw);
 server.use("/api",router);
 
 
-
+page.get('/register', (req, res) => {
+    res.send(`
+        <form action="/register" method="POST">
+            <input type="text" name="userId" placeholder="User ID" required /><br>
+            <input type="password" name="password" placeholder="Password" required /><br>
+            <button type="submit">Register</button>
+        </form>
+    `);
+});
 
 connect().then(
 server.listen(port,error => {
